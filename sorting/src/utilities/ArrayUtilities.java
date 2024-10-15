@@ -24,4 +24,32 @@ public class ArrayUtilities {
         }
         return true; //it must be sorted!
     }
+
+    public static void insertionSort(int[] array, int low, int high)
+    {
+        // for each element starting with the second element (the first is already sorted)
+        for (int i = low; i <= high; i++)
+        {
+            // loop down to the first element, swapping as needed
+            for (int j = i; j >= low + 1; j--)
+            {
+                if (array[j] < array[j - 1])
+                {
+                    swap(array, j, j - 1);
+                }
+                else
+                {
+                    // stop now, since all elements to the left are in order
+                    break;
+                }
+            }
+        }
+    }
+
+    private static void swap(int[] array, int first, int second)
+    {
+        int temp = array[first];
+        array[first] = array[second];
+        array[second] = temp;
+    }
 }
